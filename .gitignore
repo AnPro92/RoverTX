@@ -1,0 +1,12 @@
+# Doxygen filey
+*.html
+*.css
+*.png
+*.jpg
+*.js
+
+
+# Executables
+*.exe
+*.out
+*.app
