@@ -9,8 +9,8 @@ This project is done in the context of Google Summer of Code 2019
 0. Connect all devices with the configuration from this table:
 	https://gitlab-pages.idial.institute/panorama.gsoc.project/rover.doc/content/roverhw.html#connecting
 
-1. Fork the repository:
-	git clone https://gitlab.idial.institute/panorama.gsoc.project/rover.src
+1. Fork this repository:
+	git clone https://github.com/AnPro92/RoverTX.git
 
 2. To get the I2C drivers for implementation use the following command:
 	sudo apt-get install libi2c-dev i2c-tools
