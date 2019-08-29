@@ -1,0 +1,43 @@
+Device,Pin name,Cable color,Function,RVL port layout,To Device,Pin,Linux Pin
+HC- SR 04_1 (rear),Echo,blue,Echo signal 1,Ultrasonic 1,RVL,E1,
+,Trigger,green,Trigger signal 1,Ultrasonic 1,RVL,T1,
+,5V,yellow,5V,Ultrasonic 1,RVL,5V,
+,GND,orange,GND,Ultrasonic 1,RVL,GND,
+HC- SR 04_0 (front),Echo,black,Echo signal 0,Ultrasonic 0,RVL,E0,
+,Trigger,white,Trigger signal 0,Ultrasonic 0,RVL,T0,
+,5V,yellow,5V,Ultrasonic 0,RVL,5V,
+,GND,purple,GND,Ultrasonic 0,RVL,GND,
+Rover Sense Layer,E1,blue,Echo signal 1,Port 2_P4,Jetson TX2,12,392
+,T1,green,Trigger signal 1,Port 2_P3,Jetson TX2,13,397
+,E0,black,Echo signal 0,Port 2_P2,Jetson TX2,31,298
+,T0,white,Trigger signal 0,Port 2_P1,Jetson TX2,37,388
+,SDA_0,orange,,Port 1, P1_Jetson TX2,3,305
+,SCL_0,yellow,,Port 1_P2,Jetson TX2,5,304
+,5V,yellow,,Port 5_P2,Jetson TX2,2,
+,3.3V,red,3.3V,Port 5_P1,Jetson TX2,1,
+,GND,purple,GND,Port 5_P3,Jetson TX2,6,
+PWM Driver,SDA,black,SDA,I2C Extension port 1,RVL,SDA,
+,SCL,white,SCL,I2C Extension port 1,RVL,SCL,
+,VCC,grey,5V,I2C Extension port 1,RVL,3V3,
+,GND,purple,GND,I2C Extension port 1,RVL,GND,
+Motor Shield,ENABLE,yellow,Eable motors,,Jetson TX2,32,297
+LEFT MOTOR,M1 IN1,orange,Direction1,,Jetson TX2,40,393
+,M1 IN2,yellow,Speed1,,PWM Driver,0 PWM,
+,M1OUT1,yellow,MOTOR1,,Motor 1,red cable,
+,M1OUT2,orange,MOTOR1,,Motor 1,black cable,
+,M1PWM / D1,grey,pwm mode,,Motor Shield,GND,
+,M1 PWM / D2 ,yellow,pwm mode,,Motor Shield,VDD,
+RIGHT MOTOR,M2 IN1,orange,Direction2,,Jetson TX2,35,395
+,M2 IN2,yellow,Speed2,,PWM Driver,8 PWM,
+,M2OUT1,blue,MOTOR2,,Motor 2,black cable,
+,M2OUT2,purple,MOTOR2,,Motor 2,red cable,
+,M2PWM / D1,red,pwm mode,,Motor Shield,GND,
+,M2 PWM / D2 ,orange,pwm mode,,Motor Shield,VDD,
+,SLEW,purple,high frequenz mode,,Motor Shield,VDD,
+,VIN,orange,VIN for power supply,,PWM Driver,V+ Port 0,
+,GND,brown,GND for power supply,,PWM Driver,GND Port 0,
+,VDD,red,VIN for VDD (default jumper),,PWM Driver,V+ Port 8,
+,GND,brown,GND ,,PWM Driver,GND Port 8,
+Button,usr_button,green,input user,Port 4_P1,Jetson TX2,22,254
+,shutdown,yellow,shutdown remote control,Port 4_P4,Jetson TX2,15,255
+Buzzer,Buzzer,orange,buzzer for beeping,Port 4_P3,Jetson TX2,11,466

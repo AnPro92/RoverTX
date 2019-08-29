@@ -1,8 +1,8 @@
 # Doxygen filey
-*.html
+#*.html
 *.css
-*.png
-*.jpg
+#*.png
+#*.jpg
 *.js
 
 
