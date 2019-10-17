@@ -139,13 +139,16 @@ void RUNNING::runEscape(){
 	int r =sensors->readDistance(rear);
 	if(f > 2 && r >2){	//check if there is still space to move
 		while(!checkQuit()){	//while no mode changed or escape condition
-			if((f > NO_ECHO) || (r> NO_ECHO)){//while at least one sensor delivers a value
+			while(((f > NO_ECHO) || (r> NO_ECHO))){//while at least one sensor delivers a value
 				if(drive->intelligentEscaping(f,r,nospeedchange,defaultFrequenz)){
 					f=sensors->readDistance(front);
 					r=sensors->readDistance(rear);
-				}else
-					return;;
+					printf("Front: %d and Rear %d", f,r);
+				}else{
+					return;
+				}
 			}
 		}
 	}
+	drive->stopDriving();
 }

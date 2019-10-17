@@ -17,7 +17,7 @@ using namespace std;
 
 
 CONTROLLER::CONTROLLER() {
-	mode = remoteControl;
+	mode = defaultRunnungMode;
 	running = new RUNNING();
 }
 CONTROLLER::~CONTROLLER() {

@@ -85,7 +85,7 @@ int MOTORSHIELD::checkError(void){
 		return 0;
 	else{
 #ifdef INCLUDE_DEBUG_STATEMENT
-       	    printf("Error value of pwm driver is:%d",error);
+       	    printf("Error value of pwm driver is:%d",pwmDriver->error);
 #endif
 		return 1;
 	}
@@ -143,13 +143,13 @@ void MOTORSHIELD::oneMotor(int motorDirectionPin,int dir, int speed, int freq){
 	if(motorDirectionPin == right_motor_direction){
 		pwmDriver->setPWM(rightmotor,onValue,offValue);
 #ifdef INCLUDE_DEBUG_STATEMENT
-		printf("Left Motor has PWM signal now with onValue: %d and offValue: %d",onValue,offoffValue);
+		printf("Left Motor has PWM signal now with onValue: %d and offValue: %d",onValue,offValue);
 #endif
 	}
 	else if(motorDirectionPin==left_motor_direction){
-		pwmDriver->setPWM(leftmotor,lowspeed,highspeed);
+		pwmDriver->setPWM(leftmotor,onValue,offValue);
 #ifdef INCLUDE_DEBUG_STATEMENT
-		printf("Left Motor has PWM signal now with onValue: %d and offValue: %d",onValue,offoffValue);
+		printf("Left Motor has PWM signal now with onValue: %d and offValue: %d",onValue,offValue);
 #endif
 	}
 	turnOnMotors();
@@ -160,22 +160,21 @@ void MOTORSHIELD::bothMotor(int dir, int speed, int freq){
 	int offValue = 0;
 	pwmDriver->setPWMFrequency(freq);
 	if(dir == drive_forward){
-
 		onValue = slow_forward+speed;	//increase the onValue -> more speed
 		offValue = fast_forward;
 	}
 	else if(dir == drive_backward){
-		onValue = slow_backward-speed;	//decrease the onValue -> more speed
-		offValue = fast_backward;
+		onValue = slow_backward;//-speed;	//decrease the onValue -> more speed
+		offValue = fast_backward+speed;	//increase the offValue -> more speed
 	}
 	//problem with power supply for motors?
 	gpioSetValue(right_motor_direction,dir);
 	gpioSetValue(left_motor_direction,dir);
 
 	printf("Direction %d ", dir);
-	pwmDriver->setPWM(right_motor_direction,onValue,offValue);
+	pwmDriver->setAllPWM(onValue,offValue);
 	turnOnMotors();
 #ifdef INCLUDE_DEBUG_STATEMENT
-		printf("Both Motors are running now with onValue: %d and offValue: %d",onValue,offoffValue);
+		printf("Both Motors are running now with onValue: %d and offValue: %d",onValue,offValue);
 #endif
 }

@@ -1,3 +1,15 @@
+/*******************************************************************************
+ * Copyright (c) 2019 Dortmund University of Applied Sciences and Arts and others.
+ *
+ * This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License 2.0
+ * which is available at https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ *  
+ * Contributors:
+ * 	Dortmund University of Applied Sciences and Arts - initial API and implementation
+ *******************************************************************************/
 #include <motorShield.hpp>
 
 #ifndef DRIVE_HPP_
@@ -35,6 +47,7 @@ public:
 	 * freq: used frequenz for pwm signal
 	 */
 	void drive(int direction, int speed, int freq);
+	void stopDriving();
 	/**
 	 * for forward side driving depend on the input parameter side
 	 * driving left or right will be executed

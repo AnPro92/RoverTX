@@ -35,6 +35,9 @@ int DRIVE::checkError(void){
 void DRIVE::drive(int direction, int speed, int freq){
 	motorshield->bothMotor(direction, speed, freq);
 }
+void DRIVE::stopDriving(){
+	motorshield->turnOffMotors();
+}
 
 void DRIVE::forwardSideDriving(int side, int speed, int freq){
 	if(side > 0){	//side 0=both motors, 1=left, 2=right
@@ -71,7 +74,7 @@ int DRIVE::intelligentEscaping(int frontDistance, int rearDistance, int speed, i
 	int freq = defaultFrequenz;
 	int direction;
 	if((frontDistance<40 && frontDistance>2) || (rearDistance<40 && rearDistance>2)){	//check if some space changes happened inside the reacting range for just this application
-		if(frontDistance<rearDistance && rearDistance>0){	//if frontDistance is lower then the rearDistance and the rearDistance gives space to move
+		if(frontDistance<rearDistance && frontDistance>0){	//if frontDistance is lower then the rearDistance and the rearDistance gives space to move
 			printf("Drive Backward\n");
 			direction = drive_backward;
 			if(frontDistance<20){
@@ -83,7 +86,7 @@ int DRIVE::intelligentEscaping(int frontDistance, int rearDistance, int speed, i
 //				}
 			}
 		}
-		else if(rearDistance<frontDistance && frontDistance>0){	//if rearDistance is lower then the frontDistance and the frontDistance gives space to move
+		else if(rearDistance<frontDistance && rearDistance>0){	//if rearDistance is lower then the frontDistance and the frontDistance gives space to move
 			printf("Drive Forward\n");
 			direction = drive_forward;
 			if(rearDistance<20){
@@ -102,7 +105,7 @@ int DRIVE::intelligentEscaping(int frontDistance, int rearDistance, int speed, i
 		drive(direction,speed,freq);
 		return 1;
 	}
-	motorshield->turnOffMotors();
+	stopDriving();
 	return 0;
 }
 
@@ -119,7 +122,7 @@ int DRIVE::intelligentFollowing(int frontDistance, int rearDistance, int speed, 
 			}
 			if(frontDistance<5){	//if distance gets to low then beeping and movement stop
 				motorshield->beeping(1);
-				motorshield->turnOffMotors();
+				stopDriving();
 			}
 		}
 		else if(rearDistance<frontDistance && frontDistance>0){	//if rearDistance is lower then the frontDistance and the rearDistance gives space to move
@@ -133,7 +136,7 @@ int DRIVE::intelligentFollowing(int frontDistance, int rearDistance, int speed, 
 				motorshield->beeping(0.2);
 				sleep(0.2);
 				motorshield->beeping(0.2);
-				motorshield->turnOffMotors();
+				stopDriving();
 			}
 		}
 		if(freqT!=defaultFrequenz&&freqT!=0)	//if allowed frequenz change is avaible
@@ -141,7 +144,7 @@ int DRIVE::intelligentFollowing(int frontDistance, int rearDistance, int speed, 
 		drive(direction,speed,freq);	//drive with the set attribute
 		return 1;
 	}
-	motorshield->turnOffMotors();
+	stopDriving();
 	return 0;
 }
 
@@ -156,10 +159,10 @@ int DRIVE::remoteControl(int& dir, int& side, int& speed, int& freq, int &t){
 		else
 			drive(dir,speed, freq);
 		sleep(t);	//duration time of the remote command
-		motorshield->turnOffMotors();
+		stopDriving();
 		return 1;
 	}
-	motorshield->turnOffMotors();
+	stopDriving();
 	return 0;
 }
 

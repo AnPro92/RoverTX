@@ -17,8 +17,9 @@ cd ../../
 cd /../usr/include/linux
 cp i2c-dev.h /../../$directory/extern/
 
-sudo rm -r /../../$directory/JHPWMDriver
-sudo rm -r /../../$directory/JHHC-SR04
+sudo rm -r $directory/JHPWMDriver
+sudo rm -r $directory/JHHC-SR04
+sudo chmod -R 777 ../extern
 echo "*****************************************************"
 pwd
 echo "***************************************"

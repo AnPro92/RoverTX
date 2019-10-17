@@ -76,7 +76,7 @@ int SENSORS::readDistance(char sensor){
 		else {
 			int range = echoTime/58.0;
 #ifdef INCLUDE_DEBUG_STATEMENT
-			printf("%c Sensor %d cm  and echoTime: %d\t",sensor,range, echechoTime);
+			printf("%c Sensor %d cm  and echoTime: %d\t",sensor,range, echoTime);
 #endif
 			return range;
 		}
